@@ -2,11 +2,6 @@
 
 public class Person
 {
-    protected Person()
-    {
-    }
-
-
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Gender { get; set; }
@@ -15,24 +10,30 @@ public class Person
     public string Country { get; set; }
     public string Dni { get; set; }
 
-    public bool comprova_dni()
+    public bool CheckDni()
     {
-        if (Dni.Length != 9)
+        if (string.IsNullOrWhiteSpace(Dni))
             return false;
 
-        if (!int.TryParse(Dni.AsSpan(0, 8), out var dniNumber))
+        var dni = Dni.ToUpper();
+        try
+        {
+            var dniNumber = int.Parse(dni[..^1]);
+            var dniLetter = dni[^1];
+            return dniLetter == CalculateLetter(dniNumber);
+        }
+        catch (Exception e)
+        {
             return false;
-
-        var expectedLetter = calcula_lletra(dniNumber);
-        return expectedLetter == Dni[8];
+        }
     }
 
-    public bool comprova_nom()
+    public bool CheckName()
     {
         return !string.IsNullOrWhiteSpace(Name);
     }
 
-    public bool comprova_mail()
+    public bool CheckMail()
     {
         if (string.IsNullOrWhiteSpace(Email))
             return false;
@@ -43,7 +44,7 @@ public class Person
         return Email[0] != '@' && Email[^1] != '@';
     }
 
-    private static char calcula_lletra(int dniNumber)
+    private static char CalculateLetter(int dniNumber)
     {
         const string letters = "TRWAGMYFPDXBNJZSQVHLCKE";
         return letters[dniNumber % 23];

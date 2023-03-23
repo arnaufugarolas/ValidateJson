@@ -212,10 +212,11 @@
             this.dgrid_datos.AllowUserToAddRows = false;
             this.dgrid_datos.AllowUserToDeleteRows = false;
             this.dgrid_datos.AllowUserToOrderColumns = true;
-            this.dgrid_datos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgrid_datos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgrid_datos.ColumnCount = 0;
+            this.dgrid_datos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
+            this.dgrid_datos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.None;
             this.dgrid_datos.BackgroundColor = System.Drawing.Color.White;
-            this.dgrid_datos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrid_datos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgrid_datos.GridColor = System.Drawing.Color.White;
             this.dgrid_datos.Location = new System.Drawing.Point(11, 11);
             this.dgrid_datos.Margin = new System.Windows.Forms.Padding(2);
